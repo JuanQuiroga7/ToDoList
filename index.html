@@ -16,11 +16,27 @@
             <button id="button__search" type="submit">I Got This!</button>
         </div>
     </nav>
-    <main>
+    <main class="main__container">
         <div class="timer__container">
             <span id="clock"></span>
         </div>
 
+        <script>
+            function updateClock() {
+                var now = new Date();
+                var day = ("0" + now.getDate()).slice(-2);
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                var year = now.getFullYear();
+                var hours = ("0" + now.getHours()).slice(-2);
+                var minutes = ("0" + now.getMinutes()).slice(-2);
+                var seconds = ("0" + now.getSeconds()).slice(-2);
+                
+                var dateTime = day + "/" + month + "/" + year + ", " + hours + ":" + minutes + ":" + seconds;
+                document.getElementById('clock').innerHTML = dateTime;
+            }
+        
+            setInterval(updateClock, 1000);
+        </script>
         
 
     </main>

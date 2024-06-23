@@ -59,3 +59,18 @@ body{
     scale: 1.04;
 }
 
+.main__container{
+    background: yellow;
+    width: 370px;
+    height: 600px;
+}
+
+.timer__container{
+    background: green;
+    margin-top: 25px;
+}
+
+.timer__container span{
+    font-family: "Com-light";
+    color: var(--color-5);
+}
