@@ -1,0 +1,37 @@
+:root{
+    --color-1: #0D3141;
+    --color-2: #505354;
+    --color-3: #A4AAAD;
+    --color-4: #111111; 
+    --color-5: #FFFFFF;
+    --space-layout-padding-lr: 0px 15px;
+    --space-layout-padding-tb: 5px;
+    --layout__image__width: 100%;
+    --layout__image__height: 350px;
+}
+
+@font-face {
+    font-family: "Com-Reg";
+    src: url(../storage/fonts/Comfortaa-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Com-Bold";
+    src: url(../storage/fonts/Comfortaa-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Com-Light";
+    src: url(.../storage/fonts/Comfortaa-Light.ttf);
+}
+
+@font-face {
+    font-family: "Com-Med";
+    src: url(../storage/fonts/Comfortaa-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Com-SemiBold";
+    src: url(../storage/fonts/Comfortaa-SemiBold.ttf);
+}
+
