@@ -94,6 +94,11 @@ body{
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    transition: transform 0.5s ease;
+}
+
+.task__list li:hover{
+    scale: 1.05;
 }
 
 .task__list li > div {
@@ -119,6 +124,10 @@ body{
     cursor: pointer;
     width: 20px;
     height: 20px;
+}
+
+.task__list img:hover{
+    scale: 1.1;
 }
 
 .circular-background {
