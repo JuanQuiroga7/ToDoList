@@ -39,7 +39,6 @@ function deleteTask(imgElement) {
     
     const taskElement = imgElement.closest('li');
   
-    // Get the unique ID of the task from the 'data-id' attribute
     const taskId = taskElement.getAttribute('data-id');
   
     
@@ -55,8 +54,30 @@ function deleteTask(imgElement) {
       });
   }
 
-// // Post a new task
-// postTask('New Task', 'ready').then(task => {
-//   console.log(`Posted new task with ID: ${task.id}`);
-//   // Here you can also update your UI to include the new task
-// });
+
+// main.js
+const input = document.getElementById('input__search');
+const button = document.getElementById('button__search');
+
+button.addEventListener('click', function(event) {
+  event.preventDefault();
+
+  const taskName = input.value;
+  const taskStatus = 'On hold'; 
+
+  postTask(taskName, taskStatus)
+    .then(task => {
+      console.log(`Task ${task.id} added to server`);
+      
+      fetchTasks().then(tasks => {
+        updateDisplay(tasks);
+      });
+      
+      input.value = '';
+    })
+    .catch(error => {
+      console.error(`Error al añadir el task: `, error);
+    });
+});
+
+
