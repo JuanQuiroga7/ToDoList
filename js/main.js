@@ -1,4 +1,4 @@
-import { fetchTasks, postTask, deleteTask as deleteTaskFromServer } from './data.js';
+import { fetchTasks, postTask, deleteTask as deleteTaskFromServer, updateTaskOnServer } from './data.js';
 
 
 fetchTasks().then(tasks => {
@@ -13,28 +13,54 @@ fetchTasks().then(tasks => {
     tasks.forEach(task => {
       const li = document.createElement('li');
       li.setAttribute('data-id', task.id);
+
+      const checkImageSrc = task.status === 'ready' ? 'storage/img/return.png' : 'storage/img/check.png';
   
       li.innerHTML = `
         <span>${task.task}</span>
         <div>
           <div class="circular-background">
-            <img src="storage/img/check.png" onclick="markAsDone(this)" />
+            <img src="${checkImageSrc}"/>
           </div>
           <div class="circular-background">
             <img src="storage/img/trash-can.png" />
           </div>
         </div>
       `;
+
+      if (task.status === 'ready') {
+        li.classList.add('done');
+      }
   
       li.querySelector('img[src="storage/img/trash-can.png"]').addEventListener('click', function() {
         deleteTask(this);
       });
   
-      container.appendChild(li);
-    });
-  }
+    const checkButton = li.querySelector('img[src="' + checkImageSrc + '"]');
+    checkButton.addEventListener('click', function() {
+      const updatedTask = {
+        ...task,
+        status: task.status === 'ready' ? 'on-hold' : 'ready',
+      };
 
-  
+      updateTaskOnServer(task.id, updatedTask)
+        .then(() => {
+          console.log(`Task ${task.id} cambiado a estado 'ready'`);
+          
+          fetchTasks().then(tasks => {
+            updateDisplay(tasks);
+          });
+        })
+        .catch(error => {
+          console.error(`Error al actualizar task ${task.id}: `, error);
+        });
+    });
+
+    container.appendChild(li);
+  });
+}
+
+// Funcion para eliminar un task
 function deleteTask(imgElement) {
     
     const taskElement = imgElement.closest('li');
@@ -55,7 +81,7 @@ function deleteTask(imgElement) {
   }
 
 
-// main.js
+// Funcion para añadir un task
 const input = document.getElementById('input__search');
 const button = document.getElementById('button__search');
 
@@ -67,7 +93,7 @@ button.addEventListener('click', function(event) {
 
   postTask(taskName, taskStatus)
     .then(task => {
-      console.log(`Task ${task.id} added to server`);
+      console.log(`Task ${task.id} añadido al servidor`);
       
       fetchTasks().then(tasks => {
         updateDisplay(tasks);

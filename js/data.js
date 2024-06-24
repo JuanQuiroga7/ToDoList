@@ -23,4 +23,13 @@ export function fetchTasks() {
     });
   }
 
-  
+  export function updateTaskOnServer(taskId, updatedTask) {
+    return fetch(`https://6674179975872d0e0a950e53.mockapi.io/todoList/${taskId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedTask),
+    })
+    .then(response => response.json());
+  }
