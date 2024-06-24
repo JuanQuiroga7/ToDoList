@@ -60,7 +60,7 @@ body{
 }
 
 .main__container{
-    background: violet;
+    /* background: violet; */
     width: 370px;
     height: 600px;
 }
@@ -78,7 +78,9 @@ body{
 
 .task__list{
     list-style-type: none;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .task__list li{
@@ -96,7 +98,11 @@ body{
 
 .task__list li > div {
     display: flex;
-    gap: 5px;
+    gap: 8px;
+}
+
+.task__list li.done {
+    opacity: 0.5; 
 }
 
 .task__list li span{
