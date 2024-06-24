@@ -60,17 +60,67 @@ body{
 }
 
 .main__container{
-    background: yellow;
+    background: violet;
     width: 370px;
     height: 600px;
 }
 
 .timer__container{
-    background: green;
+    /* background: green; */
     margin-top: 25px;
+    margin-bottom: 12px;
 }
 
 .timer__container span{
     font-family: "Com-light";
     color: var(--color-5);
+}
+
+.task__list{
+    list-style-type: none;
+    align-items: flex-start;
+}
+
+.task__list li{
+    background: var(--color-3);
+    width: auto;
+    padding: 10px;
+    height: 36px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.task__list li > div {
+    display: flex;
+    gap: 5px;
+}
+
+.task__list li span{
+    font-family: "Com-Reg";
+    color: var(--color-5);
+    margin-right: 20px;
+}
+
+.task__list li.done span{
+    text-decoration: line-through;
+}
+
+.task__list img{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.circular-background {
+    border-radius: 50%;
+    background-color: var(--color-5);
+    width: 30px;
+    height: 30px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

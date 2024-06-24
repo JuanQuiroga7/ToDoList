@@ -37,6 +37,20 @@
         
             setInterval(updateClock, 1000);
         </script>
+
+        <ul id="taskList" class="task__list">
+            <li>
+                <span>Task 1</span>
+                <div>
+                    <div class="circular-background">
+                        <img src="storage/img/check.png" onclick="markAsDone(this)" />
+                    </div>
+                    <div class="circular-background">
+                        <img src="storage/img/trash-can.png" onclick="deleteTask(this)" />
+                    </div>
+                </div>
+            </li>
+        </ul>
         
 
     </main>
